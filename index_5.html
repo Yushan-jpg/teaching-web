@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>職場倫理與溝通 Teaching Web</title>
+<meta name="description" content="《職場倫理與溝通》課程網站：15 週講義下載與投影片預覽、閱讀進度、作業表單、瀏覽/下載紀錄與線上自測。">
+<meta property="og:title" content="職場倫理與溝通 Teaching Web">
+<meta property="og:description" content="《職場倫理與溝通》課程網站：15 週講義下載與投影片預覽、閱讀進度、作業表單、瀏覽/下載紀錄與線上自測。單一檔案、離線可開啟。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --ink:#232A3D; --ink-soft:#565F76; --ink-faint:#7A8296;
+    --paper:#E8E3D3; --paper-raised:#F4F0E3; --paper-sunken:#DCD5C1;
+    --paper-line:#C7BFA5;
+    --accent:#2B3A67; --accent-strong:#1B2648; --accent-contrast:#F4F0E3;
+    --brass:#96742A; --good:#3F6B52; --good-bg:#E1EBE3; --bad:#8B3A3A; --bad-bg:#F3E1DF;
+    --m1:#3B4C7A; --m1-bg:#E4E8F2; --m2:#3F6B52; --m2-bg:#E1EBE3; --m3:#6B4472; --m3-bg:#EEE1EE; --m4:#8A6A26; --m4-bg:#F0E7D2;
+    --shadow:0 1px 2px rgba(35,42,61,.09), 0 6px 20px rgba(35,42,61,.08);
+    --radius:12px; --radius-sm:7px;
+    --font-display:'Noto Serif TC','Source Han Serif TC',Georgia,serif;
+    --font-body:'Noto Sans TC','Source Han Sans TC',-apple-system,BlinkMacSystemFont,sans-serif;
+    --font-mono:'IBM Plex Mono','SFMono-Regular',Menlo,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#EAE5D5; --ink-soft:#B9B2A0; --ink-faint:#8B8474;
+      --paper:#1A2033; --paper-raised:#222A42; --paper-sunken:#151A2A;
+      --paper-line:#39415E;
+      --accent:#93A6DE; --accent-strong:#B7C4EC; --accent-contrast:#151A2A;
+      --brass:#D9BC6E; --good:#7FBE9B; --good-bg:#213229; --bad:#E28E8E; --bad-bg:#3A2323;
+      --m1:#8393CC; --m1-bg:#242C46; --m2:#7FBE9B; --m2-bg:#1F2E28; --m3:#C296CB; --m3-bg:#2E2233; --m4:#D9BC6E; --m4-bg:#332C1C;
+      --shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 28px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#EAE5D5; --ink-soft:#B9B2A0; --ink-faint:#8B8474;
+    --paper:#1A2033; --paper-raised:#222A42; --paper-sunken:#151A2A;
+    --paper-line:#39415E;
+    --accent:#93A6DE; --accent-strong:#B7C4EC; --accent-contrast:#151A2A;
+    --brass:#D9BC6E; --good:#7FBE9B; --good-bg:#213229; --bad:#E28E8E; --bad-bg:#3A2323;
+    --m1:#8393CC; --m1-bg:#242C46; --m2:#7FBE9B; --m2-bg:#1F2E28; --m3:#C296CB; --m3-bg:#2E2233; --m4:#D9BC6E; --m4-bg:#332C1C;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 28px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box;}
+  body{background:var(--paper); color:var(--ink); font-family:var(--font-body); line-height:1.6; padding:0 20px; padding-block:0;}
+  h1,h2,h3,h4{font-family:var(--font-display); text-wrap:balance; margin:0; color:var(--ink);}
+  a{color:var(--accent);}
+  .wrap{max-width:1080px; margin:0 auto;}
+  .mono{font-family:var(--font-mono); font-variant-numeric:tabular-nums;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding-block:36px 28px; border-bottom:1px solid var(--paper-line);}
+  .eyebrow{font-family:var(--font-mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);}
+  .course-title{font-size:clamp(28px,5vw,44px); font-weight:700; margin-top:6px;}
+  .course-sub{color:var(--ink-soft); font-size:15px; margin-top:8px; max-width:60ch;}
+
+  /* org-chart nav */
+  .orgchart{margin-top:32px;}
+  .oc-title{display:flex; justify-content:center;}
+  .oc-node{
+    display:block; text-align:center; font-family:var(--font-body); font-weight:600; font-size:14px;
+    background:var(--paper-raised); border:1px solid var(--paper-line); border-radius:var(--radius-sm);
+    padding:10px 14px; color:var(--ink); text-decoration:none; box-shadow:var(--shadow); cursor:pointer;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .oc-node:hover{transform:translateY(-2px); border-color:var(--accent);}
+  .oc-node.is-active{border-color:var(--accent); background:var(--accent); color:var(--accent-contrast);}
+  .oc-node .oc-en{display:block; font-family:var(--font-mono); font-weight:500; font-size:10.5px; letter-spacing:.03em; opacity:.75; margin-top:2px;}
+  .oc-root{font-family:var(--font-display); font-size:17px; padding:10px 22px; background:var(--ink); color:var(--paper-raised); border:none;}
+  .oc-connectors{position:relative; height:24px;}
+  .oc-connectors .vline-top{position:absolute; left:50%; top:0; bottom:50%; width:0; border-left:2px solid var(--ink-faint);}
+  .oc-connectors .hline{position:absolute; left:16.6667%; right:16.6667%; top:50%; border-top:2px solid var(--ink-faint);}
+  .oc-connectors .vline-col{position:absolute; top:50%; bottom:0; width:0; border-left:2px solid var(--ink-faint);}
+  .oc-connectors .vline-col.c1{left:16.6667%;}
+  .oc-connectors .vline-col.c2{left:50%;}
+  .oc-connectors .vline-col.c3{left:83.3333%;}
+  .oc-row{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;}
+  .oc-sub-connectors{position:relative; height:22px;}
+  .oc-sub-connectors .vline-solo{position:absolute; top:0; bottom:0; width:0; border-left:2px solid var(--ink-faint);}
+  .oc-sub-connectors .vline-solo.c1{left:16.6667%;}
+  .oc-sub-connectors .vline-solo.c3{left:83.3333%;}
+  .oc-row2{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;}
+  .oc-row2 .oc-node{font-size:13px; opacity:.92;}
+  @media (max-width:640px){
+    .orgchart{display:none;}
+  }
+  .tab-pills{display:none; flex-wrap:wrap; gap:8px; margin-top:20px;}
+  @media (max-width:640px){ .tab-pills{display:flex;} }
+  .tab-pills a{
+    font-size:13px; font-weight:600; padding:8px 12px; border-radius:999px; border:1px solid var(--paper-line);
+    background:var(--paper-raised); text-decoration:none; color:var(--ink);
+  }
+  .tab-pills a.is-active{background:var(--accent); color:var(--accent-contrast); border-color:var(--accent);}
+
+  .sticky-nav{position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter:blur(6px); border-bottom:1px solid var(--paper-line); display:none;}
+  .sticky-nav.show{display:block;}
+  .sticky-nav .wrap{display:flex; gap:4px; overflow-x:auto; padding-block:10px;}
+  .sticky-nav a{white-space:nowrap; font-size:13px; font-weight:600; padding:7px 12px; border-radius:999px; text-decoration:none; color:var(--ink-soft);}
+  .sticky-nav a.is-active{background:var(--accent); color:var(--accent-contrast);}
+
+  /* ---------- Sections ---------- */
+  section.panel{padding-block:44px; border-bottom:1px solid var(--paper-line);}
+  section.panel:last-of-type{border-bottom:none;}
+  .panel-head{margin-bottom:26px;}
+  .panel-eyebrow{font-family:var(--font-mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--brass); font-weight:600;}
+  .panel-title{font-size:26px; margin-top:4px;}
+  .panel-desc{color:var(--ink-soft); font-size:14.5px; margin-top:8px; max-width:70ch;}
+
+  .btn{
+    font-family:var(--font-body); font-weight:600; font-size:13.5px; border-radius:var(--radius-sm);
+    border:1px solid var(--paper-line); background:var(--paper-raised); color:var(--ink);
+    padding:8px 13px; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .btn:hover{border-color:var(--accent);}
+  .btn:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+  .btn-primary{background:var(--accent); border-color:var(--accent); color:var(--accent-contrast);}
+  .btn-primary:hover{background:var(--accent-strong); border-color:var(--accent-strong);}
+  .btn-ghost{background:transparent;}
+  .btn-sm{font-size:12px; padding:5px 9px;}
+  .btn[disabled]{opacity:.45; cursor:not-allowed;}
+
+  /* lecture cards */
+  .module-block{margin-bottom:30px;}
+  .module-head{display:flex; align-items:baseline; gap:10px; margin-bottom:12px;}
+  .module-tag{font-family:var(--font-mono); font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px;}
+  .module-name{font-size:15px; font-weight:600; color:var(--ink-soft);}
+  .card-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px;}
+  .card{
+    background:var(--paper-raised); border:1px solid var(--paper-line); border-radius:var(--radius);
+    padding:16px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:10px;
+  }
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px;}
+  .card-week{font-family:var(--font-mono); font-size:12px; color:var(--ink-faint); font-weight:600;}
+  .card-title{font-size:15.5px; font-weight:700; line-height:1.4;}
+  .card-title-en{font-size:12px; color:var(--ink-soft); margin-top:2px; font-style:italic;}
+  .card-key{font-size:12.5px; color:var(--ink-soft); border-left:2px solid var(--paper-line); padding-left:8px;}
+  .card-actions{display:flex; flex-wrap:wrap; gap:6px; margin-top:auto;}
+  .card-note{font-size:11px; color:var(--ink-faint);}
+  .upload-row{display:flex; align-items:center; gap:6px; font-size:11.5px; color:var(--ink-faint); flex-wrap:wrap;}
+  .mark-badge{background:var(--m4-bg); color:var(--m4); border-radius:6px; padding:2px 7px; font-weight:600;}
+  .file-label{position:relative; overflow:hidden;}
+  .file-label input[type=file]{position:absolute; inset:0; opacity:0; cursor:pointer;}
+  .card-count-badges{display:flex; gap:10px; font-size:11px; color:var(--ink-faint); font-family:var(--font-mono);}
+
+  .backup-note{font-size:12.5px; color:var(--ink-soft); background:var(--paper-sunken); border-radius:var(--radius-sm); padding:9px 12px; margin-top:10px;}
+  code{font-family:var(--font-mono); background:var(--paper-sunken); padding:1px 5px; border-radius:4px; font-size:.95em;}
+  .need-file-note{font-size:11px; color:var(--ink-faint); margin-top:-2px;}
+
+  .callout{background:var(--paper-sunken); border-radius:var(--radius); padding:14px 16px; font-size:13px; color:var(--ink-soft); margin-top:16px;}
+  .callout strong{color:var(--ink);}
+
+  /* reading */
+  .progress-bar{height:8px; border-radius:999px; background:var(--paper-sunken); overflow:hidden; margin:14px 0 22px;}
+  .progress-bar > i{display:block; height:100%; background:var(--accent); transition:width .25s ease;}
+  .reading-row{display:grid; grid-template-columns:auto 1fr; gap:12px; padding:12px 0; border-bottom:1px solid var(--paper-line); align-items:flex-start;}
+  .reading-row:last-child{border-bottom:none;}
+  .reading-check{width:20px; height:20px; margin-top:2px; accent-color:var(--accent); cursor:pointer;}
+  .reading-week{font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); font-weight:600;}
+  .reading-title{font-size:14.5px; font-weight:700; margin-top:2px;}
+  .reading-key{font-size:12.5px; color:var(--ink-soft); margin-top:4px;}
+  .reading-row.done .reading-title, .reading-row.done .reading-key{color:var(--ink-faint); text-decoration:line-through; text-decoration-color:var(--paper-line);}
+
+  /* homework */
+  .hw-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media (max-width:760px){.hw-grid{grid-template-columns:1fr;}}
+  .field-label{font-size:12.5px; font-weight:700; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; display:block; margin-bottom:6px;}
+  select, textarea, input[type=text]{
+    width:100%; font-family:var(--font-body); font-size:14px; color:var(--ink); background:var(--paper-raised);
+    border:1px solid var(--paper-line); border-radius:var(--radius-sm); padding:9px 11px;
+  }
+  textarea{min-height:100px; resize:vertical;}
+  .hw-brief{background:var(--paper-sunken); border-radius:var(--radius); padding:14px 16px; margin-top:14px; font-size:13.5px;}
+  .hw-brief dt{font-weight:700; font-size:12px; color:var(--ink-soft); margin-top:10px;}
+  .hw-brief dt:first-child{margin-top:0;}
+  .hw-brief dd{margin:3px 0 0;}
+  .hw-log{margin-top:18px; display:flex; flex-direction:column; gap:10px;}
+  .hw-log-item{background:var(--paper-raised); border:1px solid var(--paper-line); border-radius:var(--radius-sm); padding:10px 12px; font-size:13px;}
+  .hw-log-item .meta{display:flex; justify-content:space-between; color:var(--ink-faint); font-size:11px; font-family:var(--font-mono); margin-bottom:5px;}
+
+  /* counters */
+  .stat-row{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:24px;}
+  .stat-tile{background:var(--paper-raised); border:1px solid var(--paper-line); border-radius:var(--radius); padding:14px 16px;}
+  .stat-tile .num{font-family:var(--font-mono); font-size:26px; font-weight:600; color:var(--accent);}
+  .stat-tile .lbl{font-size:12px; color:var(--ink-soft); margin-top:2px;}
+  table.counts{width:100%; border-collapse:collapse; font-size:13px;}
+  table.counts th, table.counts td{text-align:left; padding:7px 8px; border-bottom:1px solid var(--paper-line);}
+  table.counts th{font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-faint); font-weight:600;}
+  table.counts td.num, table.counts th.num{text-align:right; font-family:var(--font-mono);}
+  .table-wrap{overflow-x:auto; background:var(--paper-raised); border:1px solid var(--paper-line); border-radius:var(--radius); padding:6px 14px;}
+  .export-box{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:10px;}
+  .export-out{width:100%; margin-top:10px;}
+
+  /* quiz */
+  .quiz-q{background:var(--paper-raised); border:1px solid var(--paper-line); border-radius:var(--radius); padding:16px; margin-bottom:14px;}
+  .quiz-q .q-num{font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); font-weight:600;}
+  .quiz-q .q-text{font-size:15px; font-weight:700; margin-top:4px;}
+  .quiz-opts{margin-top:10px; display:flex; flex-direction:column; gap:7px;}
+  .quiz-opt{display:flex; gap:8px; align-items:flex-start; font-size:13.5px; cursor:pointer; padding:6px 8px; border-radius:7px;}
+  .quiz-opt:hover{background:var(--paper-sunken);}
+  .quiz-opt input{margin-top:3px; accent-color:var(--accent);}
+  .quiz-feedback{margin-top:10px; font-size:12.5px; padding:8px 10px; border-radius:7px; display:none;}
+  .quiz-q.correct .quiz-feedback{display:block; background:var(--good-bg); color:var(--good);}
+  .quiz-q.wrong .quiz-feedback{display:block; background:var(--bad-bg); color:var(--bad);}
+  .quiz-score{font-size:18px; font-weight:700; margin-top:6px;}
+
+  /* preview modal */
+  .preview-modal{position:fixed; inset:0; z-index:100; display:none; align-items:center; justify-content:center; padding:24px;}
+  .preview-modal.open{display:flex;}
+  .preview-backdrop{position:absolute; inset:0; background:rgba(10,12,20,.78);}
+  .preview-dialog{position:relative; max-width:min(920px,92vw); max-height:88vh; display:flex; flex-direction:column; align-items:center; gap:10px;}
+  .preview-img{max-width:100%; max-height:74vh; border-radius:8px; box-shadow:0 12px 40px rgba(0,0,0,.5); background:#fff;}
+  .preview-placeholder{width:min(640px,80vw); aspect-ratio:4/3; display:flex; align-items:center; justify-content:center; text-align:center; padding:26px; color:#33363f; font-family:var(--font-mono); font-size:12.5px; line-height:1.8; white-space:pre-wrap;}
+  .preview-caption{color:#F4F0E3; font-size:13px; font-family:var(--font-mono);}
+  .preview-close{position:absolute; top:-44px; right:0; background:transparent; border:none; color:#F4F0E3; font-size:22px; cursor:pointer; line-height:1;}
+  .preview-nav{position:absolute; top:50%; transform:translateY(-50%); background:rgba(244,240,227,.92); border:none; color:var(--ink); width:44px; height:44px; border-radius:999px; font-size:24px; cursor:pointer; display:flex; align-items:center; justify-content:center;}
+  .preview-nav:disabled{opacity:.3; cursor:not-allowed;}
+  .preview-prev{left:-8px;}
+  .preview-next{right:-8px;}
+  @media (max-width:640px){
+    .preview-prev{left:4px;} .preview-next{right:4px;}
+  }
+
+  footer{padding-block:30px; text-align:center; color:var(--ink-faint); font-size:12px;}
+  .visually-hidden{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap;}
+</style>
+</head>
+<body>
+
+<div class="sticky-nav" id="stickyNav">
+  <div class="wrap">
+    <a href="#lectures" data-nav="lectures">PPTs for Lectures</a>
+    <a href="#reading" data-nav="reading">Reading assignments</a>
+    <a href="#homework" data-nav="homework">Home Work</a>
+    <a href="#counters" data-nav="counters">Counter logging</a>
+    <a href="#test" data-nav="test">online Test</a>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Teaching Web</div>
+    <h1 class="course-title">職場倫理與溝通</h1>
+    <p class="course-sub">Workplace Ethics and Communication ・ 115 學年度第 1 學期 ・ 共 15 週，四大構面：工作（績效）・企業（文化）・溝通（說服）・能力（AI）。開啟本頁即可自由瀏覽每週講義內容。</p>
+    <p class="course-sub mono" style="font-size:12px; margin-top:4px;">離線單檔版（Offline Single-File Edition）・ 本檔案可直接雙擊在瀏覽器開啟，無需伺服器</p>
+
+    <nav class="orgchart" aria-label="課程網站結構">
+      <div class="oc-title"><span class="oc-node oc-root">職場倫理與溝通<span class="oc-en">Teaching Web</span></span></div>
+      <div class="oc-connectors"><span class="vline-top"></span><span class="hline"></span><span class="vline-col c1"></span><span class="vline-col c2"></span><span class="vline-col c3"></span></div>
+      <div class="oc-row">
+        <a class="oc-node" href="#lectures" data-nav="lectures">PPTs for Lectures uploaded<span class="oc-en">上傳／下載講義</span></a>
+        <a class="oc-node" href="#reading" data-nav="reading">Reading assignments<span class="oc-en">指定閱讀進度</span></a>
+        <a class="oc-node" href="#homework" data-nav="homework">Home Work<span class="oc-en">本週作業</span></a>
+      </div>
+      <div class="oc-sub-connectors"><span class="vline-solo c1"></span><span class="vline-solo c3"></span></div>
+      <div class="oc-row2">
+        <a class="oc-node" href="#counters" data-nav="counters">Counter logging<span class="oc-en">瀏覽／下載紀錄</span></a>
+        <span></span>
+        <a class="oc-node" href="#test" data-nav="test">online Test<span class="oc-en">五題線上自測</span></a>
+      </div>
+    </nav>
+
+    <div class="tab-pills" aria-label="課程網站結構（行動版）">
+      <a href="#lectures" data-nav="lectures">PPTs for Lectures</a>
+      <a href="#reading" data-nav="reading">Reading assignments</a>
+      <a href="#homework" data-nav="homework">Home Work</a>
+      <a href="#counters" data-nav="counters">Counter logging</a>
+      <a href="#test" data-nav="test">online Test</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ PPTs FOR LECTURES ============ -->
+  <section class="panel" id="lectures">
+    <div class="panel-head">
+      <div class="panel-eyebrow">01 · PPTs for Lectures uploaded</div>
+      <h2 class="panel-title">講義下載區</h2>
+      <p class="panel-desc">每張卡片：一鍵下載真實 PPTX 檔案、線上翻頁預覽投影片、以及教師端的「本機標記上傳」。學生不需登入即可自由瀏覽與下載全部 15 週講義。</p>
+    </div>
+
+    <div class="callout" id="uploadNotice">
+      <strong>關於「教師上傳」：</strong>本站為純前端靜態網站，教師選檔後僅會在<strong>目前這台瀏覽器</strong>標記「已上傳」，並不會真的替換掉下載檔案、也不會同步給其他人。若要永久更新某週講義，請把新檔案交給網站管理者重新發布整份網站。
+    </div>
+
+    <div class="callout" id="offlineNotice">
+      <strong>本頁為單一檔案離線示範版：</strong>這份 <code>index.html</code> 不引用任何本機相對路徑的外部檔案（含圖片），下載即開即用。每張講義卡片上標示的檔名是<strong>正式部署時需要準備的實體檔案</strong>，投影片預覽區則會列出所需的圖檔清單，而不是真的顯示圖片。要恢復完整的下載與縮圖預覽功能，只要把對應檔案放進與 <code>index.html</code> 同層的 <code>materials/</code>、<code>previews/</code> 資料夾即可（完整清單見 README）。
+    </div>
+
+    <div id="moduleContainer"></div>
+
+    <div style="margin-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <button class="btn btn-primary" id="addCardBtn">＋ 新增 PPT 卡片</button>
+      <span class="card-note">新增的卡片只會存在你目前這台瀏覽器裡，尚無法附上真實檔案，僅供教師暫存規劃用。</span>
+    </div>
+    <div id="customCardWrap" style="margin-top:14px;"></div>
+  </section>
+
+  <!-- ============ READING ============ -->
+  <section class="panel" id="reading">
+    <div class="panel-head">
+      <div class="panel-eyebrow">02 · Reading assignments</div>
+      <h2 class="panel-title">指定閱讀節奏</h2>
+      <p class="panel-desc">每週上課前，建議先花 10–15 分鐘瀏覽當週講義與「本週核心訊息」，並在課後留 5 分鐘想一想課後討論題。勾選代表你已完成當週閱讀，進度只存在你自己的瀏覽器。</p>
+    </div>
+    <div class="progress-bar"><i id="readingProgressBar" style="width:0%"></i></div>
+    <div id="readingProgressLabel" class="card-note" style="margin-bottom:6px;"></div>
+    <div class="table-wrap"><div id="readingList"></div></div>
+  </section>
+
+  <!-- ============ HOMEWORK ============ -->
+  <section class="panel" id="homework">
+    <div class="panel-head">
+      <div class="panel-eyebrow">03 · Home Work</div>
+      <h2 class="panel-title">本週作業表單</h2>
+      <p class="panel-desc">選擇週次後會自動帶出該週課堂活動與課後討論題作為作業內容；填寫心得後按「儲存作業紀錄」，紀錄只存在你自己的瀏覽器，正式繳交仍請依老師指定管道（例如課程平台或紙本）。</p>
+    </div>
+    <div class="hw-grid">
+      <div>
+        <label class="field-label" for="hwWeekSelect">選擇週次</label>
+        <select id="hwWeekSelect"></select>
+        <div class="hw-brief" id="hwBrief"></div>
+      </div>
+      <div>
+        <label class="field-label" for="hwNote">作業心得／繳交備註</label>
+        <textarea id="hwNote" placeholder="寫下你這週作業的重點、心得，或提醒自己還沒交的部分…"></textarea>
+        <div style="margin-top:10px; display:flex; gap:8px;">
+          <button class="btn btn-primary" id="hwSaveBtn">儲存作業紀錄</button>
+          <button class="btn btn-ghost" id="hwMarkDoneBtn">標記本週已完成</button>
+        </div>
+      </div>
+    </div>
+    <div class="hw-log" id="hwLog"></div>
+  </section>
+
+  <!-- ============ COUNTERS ============ -->
+  <section class="panel" id="counters">
+    <div class="panel-head">
+      <div class="panel-eyebrow">04 · Counter logging</div>
+      <h2 class="panel-title">瀏覽／下載紀錄</h2>
+      <p class="panel-desc">靜態網站沒有伺服器，無法自動跨裝置加總；以下數字只反映<strong>這台瀏覽器</strong>的行為。如需全班加總，請用下方「匯出我的紀錄」交給老師，老師再用「貼上多筆紀錄加總」合併。</p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-tile"><div class="num mono" id="statViews">0</div><div class="lbl">本機總瀏覽次數</div></div>
+      <div class="stat-tile"><div class="num mono" id="statDownloads">0</div><div class="lbl">本機總下載次數</div></div>
+      <div class="stat-tile"><div class="num mono" id="statReading">0/15</div><div class="lbl">閱讀進度</div></div>
+      <div class="stat-tile"><div class="num mono" id="statQuiz">—</div><div class="lbl">線上自測最佳分數</div></div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="counts" id="countsTable">
+        <thead><tr><th>週次</th><th>講義</th><th class="num">瀏覽</th><th class="num">下載</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="callout" style="margin-top:22px;">
+      <strong>匯出我的紀錄</strong>：產生一段代表你目前紀錄的文字，複製後傳給老師。
+      <div class="export-box">
+        <label class="field-label" style="margin:0; flex:1; min-width:160px;">
+          你的姓名或學號（選填，只存在本機）
+          <input type="text" id="studentName" placeholder="例如：資管三 王小明" style="margin-top:4px;">
+        </label>
+        <button class="btn btn-primary" id="exportStatsBtn">複製我的紀錄</button>
+      </div>
+      <textarea class="export-out mono" id="exportOut" readonly style="display:none; font-size:11px;"></textarea>
+    </div>
+
+    <div class="callout" style="margin-top:14px;">
+      <strong>老師端：貼上多筆紀錄加總（全班彙整）</strong>
+      <p style="margin:6px 0 8px;">把每位學生複製給你的紀錄，每行貼一筆，再按「加總」。這一切都在你的瀏覽器裡計算，不會上傳到任何伺服器。</p>
+      <textarea id="aggregateInput" placeholder="貼上一筆或多筆學生紀錄，一行一筆…" style="min-height:80px;"></textarea>
+      <div class="export-box">
+        <button class="btn btn-primary" id="aggregateBtn">加總</button>
+        <span class="card-note" id="aggregateSummary"></span>
+      </div>
+      <div class="table-wrap" id="aggregateResultWrap" style="display:none; margin-top:10px;">
+        <table class="counts" id="aggregateTable"><thead><tr><th>週次</th><th>講義</th><th class="num">瀏覽（全班）</th><th class="num">下載（全班）</th></tr></thead><tbody></tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ONLINE TEST ============ -->
+  <section class="panel" id="test">
+    <div class="panel-head">
+      <div class="panel-eyebrow">05 · online Test</div>
+      <h2 class="panel-title">五題線上自測</h2>
+      <p class="panel-desc">橫跨第 1、3、4、9、10 週核心概念的 5 題選擇題，作答後立即看到結果與解析，可重複測驗，系統只保留你的最佳成績。</p>
+    </div>
+    <div id="quizWrap"></div>
+    <div style="display:flex; gap:10px; align-items:center; margin-top:8px;">
+      <button class="btn btn-primary" id="quizSubmitBtn">提交答案</button>
+      <button class="btn btn-ghost" id="quizResetBtn" style="display:none;">重新測驗</button>
+      <span id="quizResult"></span>
+    </div>
+  </section>
+
+</main>
+
+<div class="preview-modal" id="previewModal" aria-hidden="true">
+  <div class="preview-backdrop" id="previewBackdrop"></div>
+  <div class="preview-dialog" role="dialog" aria-label="投影片預覽">
+    <button class="preview-close" id="previewClose" aria-label="關閉預覽">✕</button>
+    <button class="preview-nav preview-prev" id="previewPrev" aria-label="上一頁">‹</button>
+    <div class="preview-img preview-placeholder" id="previewImg" role="img"></div>
+    <button class="preview-nav preview-next" id="previewNext" aria-label="下一頁">›</button>
+    <div class="preview-caption" id="previewCaption"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    《職場倫理與溝通》教學網站・靜態前端頁面，所有紀錄僅存於各使用者自己的瀏覽器（localStorage）。
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------------- Data ---------------- */
+  var MODULES = {
+    1:{name:"模組一・工作與個人價值", en:"Work & Personal Value", key:"m1"},
+    2:{name:"模組二・企業文化與組織適應", en:"Corporate Culture & Adaptation", key:"m2"},
+    3:{name:"模組三・溝通技巧與說服藝術", en:"Communication & Persuasion", key:"m3"},
+    4:{name:"模組四・能力構面與整合收尾", en:"AI Capability & Integration", key:"m4"}
+  };
+
+  var WEEKS = [
+    {id:"week01", n:1, mod:1, file:"week01.pptx", slides:9, zh:"導論——80,000 小時的職涯藍圖", en:"Introduction — The 80,000-Hour Career Blueprint",
+     key:"職涯不是找到一份工作，而是決定 80,000 小時要投資在什麼地方。",
+     activity:"時間資產盤點：個人試算職涯總時數與目前已使用比例；兩人一組分享前 5 年最想累積的三項資產（建議 40 分鐘）。",
+     discuss:"若將你未來的 80,000 小時視為一筆投資，你希望在第一個 5 年獲得什麼非金錢的成果？"},
+    {id:"week02", n:2, mod:1, file:"week02.pptx", slides:8, zh:"工作對個人的意義與價值再定義", en:"Redefining the Meaning and Value of Work",
+     key:"薪水買得到出席，買不到投入。",
+     activity:"工作意義重寫：寫下對「工作」的一句話定義，依內在動機三要素（自主、精熟、目的）改寫，小組互評（建議 40 分鐘）。",
+     discuss:"除了薪水之外，還有哪三項要素能支撐你的工作熱情？"},
+    {id:"week03", n:3, mod:1, file:"week03.pptx", slides:8, zh:"高效績效管理與目標設定（SMART 與 OKR）", en:"Performance Management and Goal Setting (SMART & OKR)",
+     key:"沒有衡量方式的目標，只是願望。",
+     activity:"本課程 OKR 實作：個人撰寫一個 Objective 與 3 個 Key Results，同儕檢核是否可量化（建議 40 分鐘）。",
+     discuss:"請為自己本學期「職場倫理與溝通」課程，制定一份包含 3 個關鍵結果（KR）的 OKR。"},
+    {id:"week04", n:4, mod:1, file:"week04.pptx", slides:8, zh:"職場倫理基礎——誠信、責任與專業態度", en:"Foundations of Workplace Ethics — Integrity and Responsibility",
+     key:"倫理不是考試題，而是壓力之下的預設反應。",
+     activity:"倫理兩難情境演練：分組抽取情境卡（誇大數據、代簽名、私用公司資源），提出回應腳本並推演三個月後果（建議 40 分鐘）。",
+     discuss:"當主管要求你採取某種「遊走法律與道德灰色地帶」的做法以提高績效時，你會如何回應？"},
+    {id:"week05", n:5, mod:2, file:"week05.pptx", slides:8, zh:"解碼企業文化與組織結構", en:"Decoding Corporate Culture and Structure",
+     key:"沒有最好的企業文化，只有你是否讀懂它。",
+     activity:"文化偵探：以打工或實習單位為對象，填寫顯性與隱性觀察表，判定其文化類型並舉出證據（建議 40 分鐘）。",
+     discuss:"觀察你過往打工、社團或實習的單位，其企業文化屬於哪種類型？對成員行為有什麼影響？"},
+    {id:"week06", n:6, mod:2, file:"week06.pptx", slides:8, zh:"快速適應企業文化與組織社交力", en:"Adapting Fast — Onboarding and Workplace Networking",
+     key:"新人最稀缺的不是能力，而是可靠。",
+     activity:"90 天上工計畫：撰寫三階段行動表，兩人一組演練一次「向前輩請教」的開場（建議 40 分鐘）。",
+     discuss:"剛進入新公司時，你會採取哪些具體行動快速熟悉團隊成員並融入文化？"},
+    {id:"week07", n:7, mod:2, file:"week07.pptx", slides:8, zh:"文化適應與個人績效的雙向結合", en:"Aligning Cultural Fit with Personal Performance",
+     key:"績效不會自己說話，它需要被翻譯。",
+     activity:"價值觀翻譯工作坊：各組抽一句企業標語翻譯成三項可觀察行為，設計五行以內週報範本（建議 40 分鐘）。",
+     discuss:"如果你發現自己的工作風格與公司的傳統文化產生衝突，你會選擇如何調整或溝通？"},
+    {id:"week08", n:8, mod:2, file:"week08.pptx", slides:8, zh:"跨世代與多元文化溝通倫理", en:"Cross-Generational and Multicultural Communication Ethics",
+     key:"包容不是忍耐差異，而是讓差異能被說出來。",
+     activity:"世代對話演練：三人一組扮演不同世代同事討論加班安排，用描述性語言重寫一次衝突對白（建議 40 分鐘）。",
+     discuss:"當與年資比你長許多的主管在工作溝通上有世代隔閡時，你認為最有效的溝通策略是什麼？"},
+    {id:"week09", n:9, mod:3, file:"week09.pptx", slides:8, zh:"期中成果回顧與職場人際關係基礎", en:"Midterm Review and Foundations of Workplace Relationships",
+     key:"批評改變不了行為，只會改變關係。",
+     activity:"三天不抱怨紀錄啟動：現場演練把一句抱怨改寫為請求，兩人一組互相給予具體讚美（建議 40 分鐘）。",
+     discuss:"連續三天記錄自己是否有「批評、責備、抱怨」的念頭或言語，若改用建設性表達會如何呈現？"},
+    {id:"week10", n:10, mod:3, file:"week10.pptx", slides:8, zh:"傾聽的藝術——從被動接收到深度共情", en:"The Art of Listening — From Hearing to Deep Empathy",
+     key:"說服始於傾聽，而不是說話。",
+     activity:"三分鐘傾聽練習：兩人一組，一方陳述三分鐘、另一方只能提問與反照，交換角色後填寫感受表（建議 40 分鐘）。",
+     discuss:"請描述一次你被「真正傾聽」的經驗，當時對方的哪些行為讓你感覺受到尊重與理解？"},
+    {id:"week11", n:11, mod:3, file:"week11.pptx", slides:8, zh:"卡內基溝通原則與影響力塑造", en:"Carnegie's Principles and Building Influence",
+     key:"說服不是讓對方輸，而是讓對方看見他自己的好處。",
+     activity:"利益翻譯練習：選定一個想推動的提案，改寫成對應主管、同儕、客戶利益的三種版本，小組票選（建議 40 分鐘）。",
+     discuss:"請選定一個你想改變朋友或同事想法的議題，試著用「對他有什麼好處」的角度重新設計你的說詞。"},
+    {id:"week12", n:12, mod:3, file:"week12.pptx", slides:8, zh:"職場高效說服與提案演練", en:"Effective Persuasion and Proposal Practice",
+     key:"沒有行動請求的提案，只是報告。",
+     activity:"三分鐘提案演練：個人依 PREP 結構撰寫講稿並限時發表，同組提出兩個異議、講者現場回應（建議 40 分鐘）。",
+     discuss:"當你提出一個創新的想法卻遭到部門主管當場質疑時，你會如何運用 PREP 結構現場回應？"},
+    {id:"week13", n:13, mod:4, file:"week13.pptx", slides:10, zh:"個人 AI 發展架構", en:"Personal AI Development Framework",
+     key:"AI amplifies who you already are — AI 放大你原本的樣子，個性與判斷力才是天花板。",
+     activity:"90 天實作計畫：記錄 5 個你每天重複的工作流程，選定兩項優先能力，於 90 天內產出一項可視成果（建議 40 分鐘）。",
+     discuss:"選一項你每天重複的工作流程，這週開始用 AI 工具實驗自動化，你預期能省下多少時間？",
+     placeholder:true,
+     backup:{file:"week13-backup.pptx", label:"Personal_AI_Development_Framework.pptx（教師備份複本，內容與本週相同）"}},
+    {id:"week14", n:14, mod:4, file:"week14.pptx", slides:10, zh:"職涯核心素養與能力架構（總整合）", en:"Career Core Competency Framework — Integration",
+     key:"職涯是 80,000 小時的長期投資；AI 是放大器，倫理才是方向盤。",
+     activity:"90 天實踐路徑複盤：對照第 1、3、13 週所訂目標與 AI 學習計畫，盤點現況並與同儕確認下一步（建議 40 分鐘）。",
+     discuss:"回顧第 1 到 13 週的內容，工作、企業、溝通、能力四個面向中，你認為自己最需要優先加強哪一項？為什麼？",
+     placeholder:true},
+    {id:"week15", n:15, mod:4, file:"week15.pptx", slides:10, zh:"青年人四個大夢：志業・良師・摯愛・家庭", en:"The Four Great Dreams of Youth",
+     key:"夢想不是等來的，是一步一步走出來的。",
+     activity:"築夢起點：把四個夢各寫一句話，本月主動聯繫一位敬佩的前輩，用三個月測試一個志業方向（建議 40 分鐘）。",
+     discuss:"在志業、良師、摯愛、家庭之中，你這學期最想先往前走一步的是哪一個？現在就寫下你的第一個夢。",
+     placeholder:true}
+  ];
+
+  var QUIZ = [
+    {q:"課程開場以「職涯是 80,000 小時的投資」為核心比喻，這個數字大致是怎麼算出來的？",
+     opts:["每週 40 小時 × 每年 50 週 × 40 年","每天 8 小時 × 365 天 × 10 年","大學四年的課堂總時數","平均退休年齡減去出生年齡"], a:0,
+     exp:"第 1 週：每週 40 小時 × 每年 50 週 × 40 年 ≈ 80,000 小時。"},
+    {q:"SMART 目標原則中的「M」代表什麼？",
+     opts:["Motivational（激勵性）","Measurable（可衡量）","Manageable（可管理）","Meaningful（有意義）"], a:1,
+     exp:"第 3 週：Measurable 可衡量——有數字或可觀察的完成訊號。"},
+    {q:"課程對「合法」與「倫理」關係的提醒是？",
+     opts:["合法就等於合乎倫理","法律是下限，不是倫理的標準","倫理比法律容易判斷","只要沒被抓到就沒有倫理問題"], a:1,
+     exp:"第 4 週：合法不等於合乎倫理——法律是下限，不是標準。"},
+    {q:"根據卡內基原則，給予讚美時較適當的做法是？",
+     opts:["讚美要具體到行為，公開讚美、私下建議","讚美越籠統越好，避免對方有壓力","讚美一定要私下進行，避免他人嫉妒","讚美的時機不重要，事後補上就好"], a:0,
+     exp:"第 9 週：讚美要具體到行為；公開讚美、私下建議；事件發生後 24 小時內效果最強。"},
+    {q:"傾聽的三個層次，由淺到深依序是？",
+     opts:["聽入心 → 聽懂 → 聽見","聽懂 → 聽見 → 聽入心","聽見 → 聽懂 → 聽入心","聽見 → 聽入心 → 聽懂"], a:2,
+     exp:"第 10 週：聽見（Hearing）→ 聽懂（Listening）→ 聽入心（Empathic）。"}
+  ];
+
+  /* ---------------- Storage helpers ---------------- */
+  var LS = {
+    get:function(k,fallback){ try{ var v=localStorage.getItem(k); return v?JSON.parse(v):fallback; }catch(e){ return fallback; } },
+    set:function(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  };
+  var K_COUNTS="tewc_counts_v1", K_READING="tewc_reading_v1", K_HW="tewc_hw_v1", K_UPLOADS="tewc_uploads_v1",
+      K_CUSTOM="tewc_custom_v1", K_QUIZ="tewc_quiz_v1", K_NAME="tewc_name_v1";
+
+  var counts = LS.get(K_COUNTS, {});      // {fileId: {views:0, downloads:0}}
+  var reading = LS.get(K_READING, {});    // {weekId: true}
+  var hwLog = LS.get(K_HW, []);           // [{week, note, ts}]
+  var uploads = LS.get(K_UPLOADS, {});    // {cardId: {name, size, ts}}
+  var customCards = LS.get(K_CUSTOM, []); // [{id, title, note, ts}]
+  var quizBest = LS.get(K_QUIZ, null);    // {score, ts}
+
+  function ensureCount(id){ if(!counts[id]) counts[id]={views:0,downloads:0}; return counts[id]; }
+  function track(id, type){
+    var c = ensureCount(id);
+    c[type] = (c[type]||0) + 1;
+    LS.set(K_COUNTS, counts);
+    renderCounters();
+    renderCardBadges();
+  }
+
+  /* ---------------- Download (offline single-file edition: no embedded binary, shows what file is needed) ---------------- */
+  function handleDownload(btn){
+    var id = btn.getAttribute("data-download");
+    var needFile = btn.getAttribute("data-needfile");
+    track(id, "downloads");
+    alert("本頁是單一檔案的離線示範版，沒有內嵌實體檔案，所以無法真的下載。\n\n正式部署時，請把下列檔案放進與 index.html 同層的資料夾：\n" + needFile);
+  }
+
+  /* ---------------- Slide preview modal ---------------- */
+  var currentPreview = null;
+  function openPreview(weekId){
+    var w = WEEKS.filter(function(x){ return x.id===weekId; })[0];
+    if(!w) return;
+    currentPreview = {id:weekId, idx:0, total:w.slides, title:w.zh};
+    track(weekId, "views");
+    renderPreviewModal();
+    document.getElementById("previewModal").classList.add("open");
+    document.body.style.overflow = "hidden";
+  }
+  function closePreview(){
+    document.getElementById("previewModal").classList.remove("open");
+    document.body.style.overflow = "";
+    currentPreview = null;
+  }
+  function stepPreview(delta){
+    if(!currentPreview) return;
+    var next = currentPreview.idx + delta;
+    if(next < 0 || next >= currentPreview.total) return;
+    currentPreview.idx = next;
+    renderPreviewModal();
+  }
+  function renderPreviewModal(){
+    if(!currentPreview) return;
+    var img = document.getElementById("previewImg");
+    var needFile = "previews/"+currentPreview.id+"/slide-"+(currentPreview.idx+1)+".jpg";
+    img.textContent = "投影片圖片預覽\n（離線單檔版未內嵌圖片）\n\n需要圖檔：\n"+needFile;
+    img.setAttribute("aria-label", currentPreview.title + " 第 "+(currentPreview.idx+1)+" 頁 — 圖檔未內嵌，需要 "+needFile);
+    document.getElementById("previewCaption").textContent = currentPreview.title + "　" + (currentPreview.idx+1) + " / " + currentPreview.total;
+    document.getElementById("previewPrev").disabled = currentPreview.idx === 0;
+    document.getElementById("previewNext").disabled = currentPreview.idx === currentPreview.total-1;
+  }
+  document.getElementById("previewClose").addEventListener("click", closePreview);
+  document.getElementById("previewBackdrop").addEventListener("click", closePreview);
+  document.getElementById("previewPrev").addEventListener("click", function(){ stepPreview(-1); });
+  document.getElementById("previewNext").addEventListener("click", function(){ stepPreview(1); });
+  document.addEventListener("keydown", function(e){
+    if(!currentPreview) return;
+    if(e.key === "Escape") closePreview();
+    if(e.key === "ArrowLeft") stepPreview(-1);
+    if(e.key === "ArrowRight") stepPreview(1);
+  });
+
+  /* ---------------- Lecture grid ---------------- */
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+
+  function cardHTML(w){
+    var mod = MODULES[w.mod];
+    var up = uploads[w.id];
+    var upHTML = up
+      ? '<span class="mark-badge">本機已標記：' + esc(up.name) + '</span> <button class="btn btn-sm btn-ghost" data-clearmark="'+w.id+'">清除</button>'
+      : '<label class="btn btn-sm file-label">選擇檔案以標記上傳<input type="file" data-mark="'+w.id+'" accept=".ppt,.pptx"></label>';
+    var backupHTML = w.backup
+      ? '<div class="backup-note">' + esc(w.backup.label) + '　｜　需要備份檔案：<code>materials/'+w.backup.file+'</code>（離線單檔版未內嵌，正式部署時請放入同層 materials/ 資料夾）</div>'
+      : '';
+    var placeholderNote = w.placeholder
+      ? '<div class="card-note" style="color:var(--m4);">＊此教材沿用自補充教材，暫代第'+w.n+'週內容，討論題為課程整合設計。</div>'
+      : '';
+    return (
+      '<div class="card" id="card-'+w.id+'">' +
+        '<div class="card-top">' +
+          '<div><div class="card-week">WEEK ' + String(w.n).padStart(2,"0") + '</div>' +
+          '<div class="card-title">' + esc(w.zh) + '</div>' +
+          '<div class="card-title-en">' + esc(w.en) + '</div></div>' +
+        '</div>' +
+        '<div class="card-key">' + esc(w.key) + '</div>' +
+        placeholderNote +
+        '<div class="card-count-badges" id="badges-'+w.id+'"></div>' +
+        '<div class="card-actions">' +
+          '<button class="btn btn-primary btn-sm" data-download="'+w.id+'" data-needfile="materials/'+w.file+'" title="離線單檔版未內嵌檔案，正式部署時請放入 materials/'+w.file+'">下載（需檔案）</button>' +
+          '<button class="btn btn-sm" data-preview="'+w.id+'">投影片預覽（'+w.slides+' 頁）</button>' +
+        '</div>' +
+        '<div class="need-file-note">需要檔案：<code>materials/'+w.file+'</code></div>' +
+        '<div class="upload-row">' + upHTML + '</div>' +
+        backupHTML +
+      '</div>'
+    );
+  }
+
+  function renderCardBadges(){
+    WEEKS.forEach(function(w){
+      var c = counts[w.id] || {views:0,downloads:0};
+      var el = document.getElementById("badges-"+w.id);
+      if(el) el.innerHTML = "瀏覽 "+ (c.views||0) +" 次・下載 "+ (c.downloads||0) +" 次";
+    });
+  }
+
+  function renderModules(){
+    var byMod = {1:[],2:[],3:[],4:[]};
+    WEEKS.forEach(function(w){ byMod[w.mod].push(w); });
+    var html = "";
+    [1,2,3,4].forEach(function(m){
+      var mod = MODULES[m];
+      html += '<div class="module-block">' +
+        '<div class="module-head"><span class="module-tag" style="background:var(--'+mod.key+'-bg); color:var(--'+mod.key+');">M'+m+'</span>' +
+        '<span class="module-name">'+esc(mod.name)+'</span></div>' +
+        '<div class="card-grid">' + byMod[m].map(cardHTML).join("") + '</div>' +
+      '</div>';
+    });
+    document.getElementById("moduleContainer").innerHTML = html;
+    renderCardBadges();
+    bindCardEvents();
+  }
+
+  function renderCustomCards(){
+    var wrap = document.getElementById("customCardWrap");
+    if(!customCards.length){ wrap.innerHTML = ""; return; }
+    wrap.innerHTML = '<div class="module-head"><span class="module-name">教師本機新增（尚無下載檔案）</span></div><div class="card-grid">' +
+      customCards.map(function(c){
+        return '<div class="card">' +
+          '<div class="card-top"><div><div class="card-week">本機新增</div>' +
+          '<div class="card-title">'+esc(c.title)+'</div></div></div>' +
+          (c.note ? '<div class="card-key">'+esc(c.note)+'</div>' : "") +
+          '<div class="card-note">尚未附上真實檔案，僅本機可見。</div>' +
+          '<div class="card-actions"><button class="btn btn-sm btn-ghost" data-delcustom="'+c.id+'">刪除</button></div>' +
+        '</div>';
+      }).join("") + '</div>';
+    wrap.querySelectorAll("[data-delcustom]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        customCards = customCards.filter(function(c){ return c.id !== btn.getAttribute("data-delcustom"); });
+        LS.set(K_CUSTOM, customCards);
+        renderCustomCards();
+      });
+    });
+  }
+
+  function bindCardEvents(){
+    document.querySelectorAll("[data-download]").forEach(function(btn){
+      btn.addEventListener("click", function(){ handleDownload(btn); });
+    });
+    document.querySelectorAll("[data-preview]").forEach(function(btn){
+      btn.addEventListener("click", function(){ openPreview(btn.getAttribute("data-preview")); });
+    });
+    document.querySelectorAll("[data-mark]").forEach(function(inp){
+      inp.addEventListener("change", function(){
+        var id = inp.getAttribute("data-mark");
+        if(inp.files && inp.files[0]){
+          uploads[id] = {name:inp.files[0].name, size:inp.files[0].size, ts:new Date().toISOString()};
+          LS.set(K_UPLOADS, uploads);
+          renderModules();
+        }
+      });
+    });
+    document.querySelectorAll("[data-clearmark]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        var id = btn.getAttribute("data-clearmark");
+        delete uploads[id];
+        LS.set(K_UPLOADS, uploads);
+        renderModules();
+      });
+    });
+  }
+
+  document.getElementById("addCardBtn").addEventListener("click", function(){
+    var title = prompt("新卡片標題（例如：第16週 補充教材）：");
+    if(!title) return;
+    var note = prompt("一句話說明（選填）：") || "";
+    customCards.push({id:"c"+Date.now(), title:title, note:note, ts:new Date().toISOString()});
+    LS.set(K_CUSTOM, customCards);
+    renderCustomCards();
+  });
+
+  /* ---------------- Reading ---------------- */
+  function renderReading(){
+    var html = WEEKS.map(function(w){
+      var done = !!reading[w.id];
+      return '<div class="reading-row'+(done?' done':'')+'">' +
+        '<input type="checkbox" class="reading-check" id="read-'+w.id+'" data-read="'+w.id+'" '+(done?'checked':'')+'>' +
+        '<label for="read-'+w.id+'">' +
+          '<div class="reading-week">WEEK '+String(w.n).padStart(2,"0")+' ・ '+esc(MODULES[w.mod].name)+'</div>' +
+          '<div class="reading-title">'+esc(w.zh)+'</div>' +
+          '<div class="reading-key">'+esc(w.key)+'　｜　課後討論：'+esc(w.discuss)+'</div>' +
+        '</label>' +
+      '</div>';
+    }).join("");
+    document.getElementById("readingList").innerHTML = html;
+    document.querySelectorAll("[data-read]").forEach(function(cb){
+      cb.addEventListener("change", function(){
+        var id = cb.getAttribute("data-read");
+        if(cb.checked) reading[id]=true; else delete reading[id];
+        LS.set(K_READING, reading);
+        renderReading();
+        renderCounters();
+      });
+    });
+    updateReadingProgress();
+  }
+  function updateReadingProgress(){
+    var done = Object.keys(reading).length;
+    document.getElementById("readingProgressBar").style.width = (done/WEEKS.length*100)+"%";
+    document.getElementById("readingProgressLabel").textContent = "已完成 "+done+" / "+WEEKS.length+" 週閱讀";
+  }
+
+  /* ---------------- Homework ---------------- */
+  function renderHwSelect(){
+    var sel = document.getElementById("hwWeekSelect");
+    sel.innerHTML = WEEKS.map(function(w){ return '<option value="'+w.id+'">第 '+w.n+' 週・'+esc(w.zh)+'</option>'; }).join("");
+    sel.addEventListener("change", renderHwBrief);
+    renderHwBrief();
+  }
+  function renderHwBrief(){
+    var id = document.getElementById("hwWeekSelect").value;
+    var w = WEEKS.filter(function(x){ return x.id===id; })[0];
+    if(!w) return;
+    document.getElementById("hwBrief").innerHTML =
+      '<dt>本週作業內容</dt><dd>'+esc(w.activity)+'</dd>' +
+      '<dt>課後討論／繳交重點</dt><dd>'+esc(w.discuss)+'</dd>';
+  }
+  function renderHwLog(){
+    var log = document.getElementById("hwLog");
+    if(!hwLog.length){ log.innerHTML = '<p class="card-note">目前還沒有作業紀錄。</p>'; return; }
+    log.innerHTML = hwLog.slice().reverse().map(function(item, idx){
+      var w = WEEKS.filter(function(x){ return x.id===item.week; })[0];
+      var real = hwLog.length-1-idx;
+      return '<div class="hw-log-item"><div class="meta"><span>第 '+(w?w.n:"?")+' 週'+(item.done?"・已完成":"")+'</span><span>'+new Date(item.ts).toLocaleString()+'</span></div>' +
+        (item.note ? esc(item.note) : '<em>（無心得文字，僅標記完成）</em>') +
+        ' <button class="btn btn-sm btn-ghost" data-delhw="'+real+'" style="float:right;">刪除</button></div>';
+    }).join("");
+    log.querySelectorAll("[data-delhw]").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        hwLog.splice(parseInt(btn.getAttribute("data-delhw"),10),1);
+        LS.set(K_HW, hwLog);
+        renderHwLog();
+      });
+    });
+  }
+  document.getElementById("hwSaveBtn").addEventListener("click", function(){
+    var week = document.getElementById("hwWeekSelect").value;
+    var note = document.getElementById("hwNote").value.trim();
+    hwLog.push({week:week, note:note, done:false, ts:new Date().toISOString()});
+    LS.set(K_HW, hwLog);
+    document.getElementById("hwNote").value = "";
+    renderHwLog();
+  });
+  document.getElementById("hwMarkDoneBtn").addEventListener("click", function(){
+    var week = document.getElementById("hwWeekSelect").value;
+    var note = document.getElementById("hwNote").value.trim();
+    hwLog.push({week:week, note:note, done:true, ts:new Date().toISOString()});
+    LS.set(K_HW, hwLog);
+    document.getElementById("hwNote").value = "";
+    renderHwLog();
+  });
+
+  /* ---------------- Counters ---------------- */
+  function renderCounters(){
+    var totalViews=0, totalDownloads=0;
+    var rows = WEEKS.map(function(w){
+      var c = counts[w.id] || {views:0,downloads:0};
+      totalViews += c.views||0; totalDownloads += c.downloads||0;
+      return '<tr><td class="mono">W'+String(w.n).padStart(2,"0")+'</td><td>'+esc(w.zh)+'</td><td class="num mono">'+(c.views||0)+'</td><td class="num mono">'+(c.downloads||0)+'</td></tr>';
+    }).join("");
+    document.getElementById("countsTable").querySelector("tbody").innerHTML = rows;
+    document.getElementById("statViews").textContent = totalViews;
+    document.getElementById("statDownloads").textContent = totalDownloads;
+    document.getElementById("statReading").textContent = Object.keys(reading).length + "/" + WEEKS.length;
+    document.getElementById("statQuiz").textContent = quizBest ? (quizBest.score+"/5") : "尚未測驗";
+  }
+
+  document.getElementById("exportStatsBtn").addEventListener("click", function(){
+    var name = document.getElementById("studentName").value.trim();
+    LS.set(K_NAME, name);
+    var payload = { v:1, name:name || "(未填寫姓名)", counts:counts, reading:Object.keys(reading), quiz:quizBest, exportedAt:new Date().toISOString() };
+    var text = JSON.stringify(payload);
+    var out = document.getElementById("exportOut");
+    out.style.display = "block";
+    out.value = text;
+    out.select();
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).catch(function(){});
+    }
+  });
+
+  document.getElementById("aggregateBtn").addEventListener("click", function(){
+    var raw = document.getElementById("aggregateInput").value.split("\n").map(function(s){return s.trim();}).filter(Boolean);
+    var agg = {}; var parsed = 0, failed = 0;
+    raw.forEach(function(line){
+      try{
+        var obj = JSON.parse(line);
+        if(!obj || !obj.counts) throw new Error("bad");
+        parsed++;
+        Object.keys(obj.counts).forEach(function(id){
+          if(!agg[id]) agg[id] = {views:0, downloads:0};
+          agg[id].views += obj.counts[id].views||0;
+          agg[id].downloads += obj.counts[id].downloads||0;
+        });
+      }catch(e){ failed++; }
+    });
+    document.getElementById("aggregateSummary").textContent = "已解析 "+parsed+" 筆學生紀錄" + (failed? "（"+failed+" 筆格式錯誤已略過）":"");
+    if(parsed){
+      var tbody = document.getElementById("aggregateTable").querySelector("tbody");
+      tbody.innerHTML = WEEKS.map(function(w){
+        var c = agg[w.id] || {views:0,downloads:0};
+        return '<tr><td class="mono">W'+String(w.n).padStart(2,"0")+'</td><td>'+esc(w.zh)+'</td><td class="num mono">'+c.views+'</td><td class="num mono">'+c.downloads+'</td></tr>';
+      }).join("");
+      document.getElementById("aggregateResultWrap").style.display = "block";
+    }
+  });
+
+  /* ---------------- Quiz ---------------- */
+  var quizAnswers = new Array(QUIZ.length).fill(null);
+  function renderQuiz(){
+    document.getElementById("quizWrap").innerHTML = QUIZ.map(function(q, qi){
+      return '<div class="quiz-q" id="quizQ'+qi+'">' +
+        '<div class="q-num">第 '+(qi+1)+' 題</div>' +
+        '<div class="q-text">'+esc(q.q)+'</div>' +
+        '<div class="quiz-opts">' + q.opts.map(function(opt, oi){
+          return '<label class="quiz-opt"><input type="radio" name="q'+qi+'" value="'+oi+'"> '+esc(opt)+'</label>';
+        }).join("") + '</div>' +
+        '<div class="quiz-feedback"></div>' +
+      '</div>';
+    }).join("");
+    document.querySelectorAll('.quiz-opts input').forEach(function(inp){
+      inp.addEventListener("change", function(){
+        var qi = parseInt(inp.name.slice(1),10);
+        quizAnswers[qi] = parseInt(inp.value,10);
+      });
+    });
+  }
+  document.getElementById("quizSubmitBtn").addEventListener("click", function(){
+    if(quizAnswers.indexOf(null) !== -1){
+      document.getElementById("quizResult").textContent = "請完成所有題目後再提交。";
+      return;
+    }
+    var score = 0;
+    QUIZ.forEach(function(q, qi){
+      var el = document.getElementById("quizQ"+qi);
+      var correct = quizAnswers[qi] === q.a;
+      if(correct) score++;
+      el.classList.remove("correct","wrong");
+      el.classList.add(correct?"correct":"wrong");
+      el.querySelector(".quiz-feedback").textContent = (correct?"✓ 答對了。":"✗ 答錯了。") + " " + q.exp;
+    });
+    document.getElementById("quizResult").innerHTML = '<span class="quiz-score">成績：'+score+' / '+QUIZ.length+'</span>';
+    if(!quizBest || score > quizBest.score){
+      quizBest = {score:score, ts:new Date().toISOString()};
+      LS.set(K_QUIZ, quizBest);
+    }
+    document.getElementById("quizSubmitBtn").style.display = "none";
+    document.getElementById("quizResetBtn").style.display = "inline-flex";
+    renderCounters();
+  });
+  document.getElementById("quizResetBtn").addEventListener("click", function(){
+    quizAnswers = new Array(QUIZ.length).fill(null);
+    renderQuiz();
+    document.getElementById("quizResult").textContent = "";
+    document.getElementById("quizSubmitBtn").style.display = "inline-flex";
+    document.getElementById("quizResetBtn").style.display = "none";
+  });
+
+  /* ---------------- Nav / scroll spy ---------------- */
+  var sections = ["lectures","reading","homework","counters","test"];
+  function setActive(id){
+    document.querySelectorAll("[data-nav]").forEach(function(el){
+      el.classList.toggle("is-active", el.getAttribute("data-nav") === id);
+    });
+  }
+  var stickyNav = document.getElementById("stickyNav");
+  var hero = document.querySelector(".hero");
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ setActive(entry.target.id); }
+    });
+  }, {rootMargin:"-45% 0px -50% 0px"});
+  sections.forEach(function(id){ var el = document.getElementById(id); if(el) io.observe(el); });
+
+  var heroIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){ stickyNav.classList.toggle("show", !entry.isIntersecting); });
+  }, {threshold:0});
+  if(hero) heroIO.observe(hero);
+
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener("click", function(e){
+      var id = a.getAttribute("href").slice(1);
+      var target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+        history.replaceState(null, "", "#"+id);
+      }
+    });
+  });
+
+  /* ---------------- Init ---------------- */
+  var savedName = LS.get(K_NAME, "");
+  if(savedName) document.getElementById("studentName").value = savedName;
+
+  renderModules();
+  renderCustomCards();
+  renderReading();
+  renderHwSelect();
+  renderHwLog();
+  renderCounters();
+  renderQuiz();
+})();
+</script>
+</body>
+</html>
